@@ -12,6 +12,7 @@ services:
         ollama serve &
         sleep 5 &&
         ollama pull codellama &&
+        ollama run deepseek-coder-v2 &&
         tail -f /dev/null
       "
   open-webui:
@@ -34,4 +35,4 @@ services:
 volumes:
   ollama_data:
   open-webui:
-# docker exec -it ollama ollama pull codellama
+# docker exec -it ollama ollama run codellama
