@@ -14,7 +14,6 @@ services:
         ollama pull codellama &&
         tail -f /dev/null
       "
-
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
     container_name: open-webui
@@ -27,7 +26,7 @@ services:
     environment:
       - LOG_LEVEL=DEBUG
       - OLLAMA_API_BASE_URL=http://ollama:11434
-      # - DEFAULT_MODEL=codellama
+      - DEFAULT_MODEL=codellama
     depends_on:
       - ollama
     restart: always
@@ -35,6 +34,4 @@ services:
 volumes:
   ollama_data:
   open-webui:
-
-
 # docker exec -it ollama ollama pull codellama
