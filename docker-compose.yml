@@ -12,7 +12,7 @@ services:
         ollama serve &
         sleep 5 &&
         ollama pull codellama &&
-        ollama run deepseek-coder-v2 &&
+        ollama pull deepseek-coder-v2 &&
         tail -f /dev/null
       "
   open-webui:
