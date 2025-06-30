@@ -11,12 +11,10 @@ services:
       bash -c "
         ollama serve &
         sleep 5 &&
-        ollama pull codellama &&
-        ollama run codellama 'Hello' &&
-        ollama pull deepseek-coder-v2 &&
-        ollama run deepseek-coder-v2 'Hello' &&
-        ollama pull codegemma &&
-        ollama run codegemma 'Hello' &&
+        ollama pull gemma3:latest &&
+        ollama run gemma3:latest 'Hello' &&
+        ollama pull deepseek-coder-v2:latest &&
+        ollama run deepseek-coder-v2:latest 'Hello' &&
         tail -f /dev/null
       "
   open-webui:
@@ -30,8 +28,8 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       - LOG_LEVEL=DEBUG
-      - OLLAMA_API_BASE_URL=http://host.docker.internal:11434
-      - DEFAULT_MODEL=codellama
+      - OLLAMA_BASE_URL=http://172.17.0.1:11434
+      - DEFAULT_MODEL=gemma3:latest
     depends_on:
       - ollama
     restart: always
@@ -39,4 +37,4 @@ services:
 volumes:
   ollama_data:
   open-webui:
-# docker exec -it ollama ollama run codellama
+# docker exec -it ollama ollama run gemma3
