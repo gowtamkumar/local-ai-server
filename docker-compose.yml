@@ -11,8 +11,8 @@ services:
       bash -c "
         ollama serve &
         sleep 5 &&
-        ollama pull gemma3:latest &&
-        ollama run gemma3:latest 'Hello' &&
+        ollama pull codegemma:latest &&
+        ollama run codegemma:latest 'Hello' &&
         ollama pull deepseek-coder-v2:latest &&
         ollama run deepseek-coder-v2:latest 'Hello' &&
         tail -f /dev/null
@@ -29,7 +29,7 @@ services:
     environment:
       - LOG_LEVEL=DEBUG
       - OLLAMA_BASE_URL=http://172.17.0.1:11434
-      - DEFAULT_MODEL=gemma3:latest
+      - DEFAULT_MODEL=codegemma:latest
     depends_on:
       - ollama
     restart: always
@@ -37,4 +37,10 @@ services:
 volumes:
   ollama_data:
   open-webui:
+# terminal use:
 # docker exec -it ollama ollama run gemma3
+
+## coding for model
+# codegemma
+# deepseek-coder-v2
+# codellama
