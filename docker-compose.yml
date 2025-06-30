@@ -15,10 +15,9 @@ services:
         ollama run codellama 'Hello' &&
         ollama pull deepseek-coder-v2 &&
         ollama run deepseek-coder-v2 'Hello' &&
-        ollama pull gemma3 &&
-        ollama run gemma3 'Hello' &&
+        ollama pull codegemma &&
+        ollama run codegemma 'Hello' &&
         tail -f /dev/null
-        
       "
   open-webui:
     image: ghcr.io/open-webui/open-webui:main
