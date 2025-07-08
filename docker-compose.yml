@@ -7,14 +7,14 @@ services:
     volumes:
       - ollama_data:/root/.ollama
     restart: unless-stopped
+    networks:
+      - ollama-net
     entrypoint: >
       bash -c "
         ollama serve &
         sleep 5 &&
-        ollama pull codegemma:latest &&
-        ollama run codegemma:latest 'Hello' &&
-        ollama pull deepseek-coder-v2:latest &&
-        ollama run deepseek-coder-v2:latest 'Hello' &&
+        ollama pull llama3 &&
+        ollama run llama3 'Hello' &&
         tail -f /dev/null
       "
   open-webui:
@@ -28,19 +28,26 @@ services:
       - "host.docker.internal:host-gateway"
     environment:
       - LOG_LEVEL=DEBUG
-      - OLLAMA_BASE_URL=http://172.17.0.1:11434
-      - DEFAULT_MODEL=codegemma:latest
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - DEFAULT_MODEL=llama3
     depends_on:
       - ollama
     restart: always
+    networks:
+      - ollama-net
 
 volumes:
   ollama_data:
   open-webui:
+
+networks:
+  ollama-net:
+    driver: bridge
 # terminal use:
 # docker exec -it ollama ollama run gemma3
 
 ## coding for model
+# llama3
 # codegemma
 # deepseek-coder-v2
 # codellama
