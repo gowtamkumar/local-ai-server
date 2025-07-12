@@ -19,7 +19,7 @@ This project sets up a local environment to run large language models (LLMs) lik
 | Service       | Description                               | Port        |
 |---------------|-------------------------------------------|-------------|
 | **Ollama**     | LLM backend, runs and manages models      | `11434`     |
-| **Open WebUI** | Frontend interface to interact with LLMs  | `8800` (host) → `8080` (container) |
+| **Open WebUI** | Frontend interface to interact with LLMs  | `8801` (host) → `8080` (container) |
 
 ---
 
