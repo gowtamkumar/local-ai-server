@@ -29,3 +29,6 @@ This project sets up a local environment to run large language models (LLMs) lik
 - Docker Compose → Comes with Docker Desktop or install via:  
   ```bash
   sudo apt install docker-compose
+- run server
+  ```bash
+  docker compose up --build
